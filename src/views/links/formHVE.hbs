@@ -74,7 +74,13 @@
                         </div>
                         <label for="" class="col-sm-2 col-form-label">RESPONSABLE:</label>
                         <div class="col-sm-4 mt-2">
-                          <input type="text" class="form-control" name="responsableHVE" value="">
+                          {{!-- <input type="text" class="form-control" name="responsableHVE" value=""> --}}
+                          <select name="responsableHVE" class="custom-select mr-sm-4">
+                            <option selected disabled>Seleccione...</option>
+                            {{#each usuario}}
+                              <option value="{{id}}">{{nombre_completo}}</option>
+                            {{/each}}
+                          </select>
                         </div>
                       </div>
 
@@ -249,7 +255,7 @@
                         <div class="col-sm-4 mt-2">
                           <input type="number" class="form-control" name="numPuertosPciHVE">
                         </div>
-                        <label for="" class="col-sm-4 col-lg-2 col-form-label">No. DE PUESTOS USB:</label>
+                        <label for="" class="col-sm-4 col-lg-2 col-form-label">No. DE PUERTOS USB:</label>
                         <div class="col-sm-4 mt-2">
                           <input type="number" class="form-control" name="numPuertosUsbHVE">
                         </div>
@@ -317,7 +323,7 @@
                     <div class="card-body">
                       <div class="row">
                         <div class="col-lg-12">
-                          <table class="table table-bordered">
+                          <table class="table table-responsive-sm table-responsive-lg table-bordered">
                             <thead class="thead-dark">
                               <tr>
                                 <th scope="col">#</th>
@@ -352,7 +358,7 @@
                     <div class="card-body">
                       <div class="row">
                         <div class="col-md-12">
-                          <table class="table table-bordered">
+                          <table class="table table-responsive-sm table-responsive-lg table-bordered">
                             <thead class="thead-dark">
                               <tr>
                                 <th scope="col">#</th>
@@ -409,23 +415,23 @@
                         <label for="" class="col-sm-2 col-form-label txt-small">CONEXION DEL TECLADO:</label>
                         <div class="col-sm-2 mt-2">
                           <select name="" class="custom-select mr-sm-2">
-                            <option selected>Seleccione...</option>
-                            <option value="1">Sí</option>
-                            <option value="2">No</option>
+                            <option selected disabled>Seleccione...</option>
+                            <option value="1">USB</option>
+                            <option value="2">PS2</option>
                           </select>
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">CONEXION DEL MOUSE:</label>
                         <div class="col-sm-2 mt-2">
                           <select name="" class="custom-select mr-sm-2">
-                            <option selected>Seleccione...</option>
-                            <option value="1">Sí</option>
-                            <option value="2">No</option>
+                            <option selected disabled>Seleccione...</option>
+                            <option value="1">USB</option>
+                            <option value="2">PS2</option>
                           </select>
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">LECTOR DE TARJETAS:</label>
                         <div class="col-sm-2 mt-2">
                           <select name="" class="custom-select mr-sm-2">
-                            <option selected>Seleccione...</option>
+                            <option selected disabled>Seleccione...</option>
                             <option value="1">Sí</option>
                             <option value="2">No</option>
                           </select>
@@ -436,7 +442,7 @@
                         <label for="" class="col-sm-2 col-form-label txt-small">TARJETA DE VIDEO:</label>
                         <div class="col-sm-4 mt-2">
                           <select name="" class="custom-select mr-sm-2">
-                            <option selected>Seleccione...</option>
+                            <option selected disabled>Seleccione...</option>
                             <option value="1">Sí</option>
                             <option value="2">No</option>
                           </select>
@@ -444,7 +450,7 @@
                         <label for="" class="col-sm-2 col-form-label txt-small">UNIDAD QUEMADORA:</label>
                         <div class="col-sm-4 mt-2">
                           <select name="" class="custom-select mr-sm-2">
-                            <option selected>Seleccione...</option>
+                            <option selected disabled>Seleccione...</option>
                             <option value="1">Sí</option>
                             <option value="2">No</option>
                           </select>
@@ -454,13 +460,13 @@
                       <div class="row mt-3">
                         <div class="col-lg-6">
                           <div class="form-check form-check-inline float-lg-right">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1">
                             <label class="form-check-label" for="inlineCheckbox1">ESTABILIZADOR</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="2">
                             <label class="form-check-label" for="inlineCheckbox1">UPS REGULADA</label>
                           </div>
                         </div>
@@ -482,44 +488,46 @@
                       <div class="row">
                         <label for="" class="col-sm-2 col-form-label txt-small">MARCA DEL MONITOR:</label>
                         <div class="col-sm-2 mt-2">
-                          <input type="text" class="form-control" value="">
+                          <input type="text" class="form-control" name="marcaMonitHVE">
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">TIPO DE MONITOR:</label>
                         <div class="col-sm-2 mt-2">
-                          <select name="" class="custom-select mr-sm-2">
-                            <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
+                          <select name="tipoMonitHVE" class="custom-select mr-sm-2">
+                            <option selected disabled>Seleccione...</option>
+                            {{#each tipo_monitor}}
+                              <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
                           </select>
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">MODELO DEL MONITOR:</label>
                         <div class="col-sm-2 mt-2">
-                          <input type="text" class="form-control" value="">
+                          <input type="text" class="form-control" name="modeloMonitHVE">
                         </div>
                       </div>
 
                       <div class="row">
                         <label for="" class="col-sm-2 col-form-label txt-small">SERIAL DEL MONITOR:</label>
                         <div class="col-sm-4 mt-2">
-                          <input type="text" class="form-control" value="">
+                          <input type="text" class="form-control" name="serialMonitHVE">
                         </div>
-                        <label for="" class="col-sm-2 col-form-label txt-small">NUM INVEN MONIT:</label>
+                        <label for="" class="col-sm-2 col-form-label txt-small">NUM INVEN MONITOR:</label>
                         <div class="col-sm-4 mt-2">
-                          <input type="number" class="form-control" value="">
+                          <input type="number" class="form-control" name="numInvMonitHVE">
                         </div>
                       </div>
 
                       <div class="row">
                         <label for="" class="col-sm-2 col-form-label txt-small">MARCA DE IMPRESORA<br>ASIGNADA:</label>
                         <div class="col-sm-4 mt-2">
-                          <input type="text" class="form-control" value="">
+                          <input type="text" class="form-control" name="marcaImpresoraHVE">
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">TIPO DE IMPRESORA:</label>
                         <div class="col-sm-4 mt-2">
-                          <select name="" class="custom-select mr-sm-2">
-                            <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
+                          <select name="tipoImprHVE" class="custom-select mr-sm-2">
+                            <option selected disabled>Seleccione...</option>
+                            {{#each tipo_impresora}}
+                              <option value="{{id}}">{{nombre}}</option>
+                            {{/each}}
                           </select>
                         </div>
                       </div>
@@ -527,38 +535,40 @@
                       <div class="row">
                         <label for="" class="col-sm-2 col-form-label txt-small">TIPO DE CONEXION:</label>
                         <div class="col-sm-2 mt-2">
-                          <select name="" class="custom-select mr-sm-2">
-                            <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
+                          <select name="tipoConexionImprHVE" class="custom-select mr-sm-2">
+                            <option selected disabled>Seleccione...</option>
+                            <option value="1">Conexion en serie</option>
+                            <option value="2">USB</option>
+                            <option value="3">Ethernet</option>
+                            <option value="4">Wireless</option>
                           </select>
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">SERIAL DE LA IMPRESORA:</label>
                         <div class="col-sm-2 mt-2">
-                          <input type="text" class="form-control" value="">
+                          <input type="text" class="form-control" name="serialImprHVE">
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">NUM INV IMPRESORA:</label>
                         <div class="col-sm-2 mt-2">
-                          <input type="text" class="form-control" value="">
+                          <input type="text" class="form-control" name="numInvImprHVE">
                         </div>
                       </div>
 
                       <div class="row">
                         <label for="" class="col-sm-2 col-form-label txt-small">ESCANER ASIGNADO:</label>
                         <div class="col-sm-2 mt-2">
-                          <select name="" class="custom-select mr-sm-2">
-                            <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
+                          <select name="escanerAsignadoHVE" class="custom-select mr-sm-2">
+                            <option selected disabled>Seleccione...</option>
+                            <option value="1">Si</option>
+                            <option value="2">No</option>
                           </select>
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">MARCA DEL ESCANER:</label>
                         <div class="col-sm-2 mt-2">
-                          <input type="text" class="form-control" value="">
+                          <input type="text" class="form-control" name="marcaEscanerHVE" disabled>
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">SERIAL DEL ESCANER:</label>
                         <div class="col-sm-2 mt-2">
-                          <input type="text" class="form-control" value="">
+                          <input type="text" class="form-control" name="serialEscanerHVE" disabled>
                         </div>
                       </div>
 
@@ -567,7 +577,7 @@
                           <div class="row">
                             <label for="" class="col-sm-4 col-form-label txt-small">NUM INV ESCANER:</label>
                             <div class="col-sm-6 mt-2">
-                              <input type="text" class="form-control" value="">
+                              <input type="text" class="form-control" name="numInvEscanerHVE" disabled>
                             </div>
                           </div>
                         </div>

@@ -1,3 +1,33 @@
+function listarTypeDisk() {
+  $.ajax({
+    url: "/formulariohve/informcionEquipo",
+    method: "GET",
+    dataType: "json"
+  }).done(msg => {
+    msg.typeDisk.forEach(element => {
+      tipoDisk = `<option value="${element.id}">${element.nombre}</option>`
+      $("select[name=tipoHddHVE]").append(tipoDisk);
+    });
+  });
+}
+
+function listarCpuRam() {
+  $.ajax({
+    url: "/formulariohve/informcionEquipo",
+    method: "GET",
+    dataType: "json"
+  }).done(msg => {
+    msg.marcacpu.forEach(element => {
+      marcaCPU = `<option value="${element.id}">${element.nombre}</option>`
+      $("select[name=nombreProcesador]").append(marcaCPU);
+    });
+    msg.typeRam.forEach(element => {
+      tipoRam = `<option value="${element.id}">${element.nombre}</option>`
+      $("select[name=tipoRAM]").append(tipoRam);
+    });
+  });
+}
+
 let nextinputequipo = 0;
 function agregarFilaCapacidadEquipo() {
   $("#rowSinRegistro1").remove();
@@ -7,10 +37,7 @@ function agregarFilaCapacidadEquipo() {
             <td><input type="text" class="form-control" name="marcaHddHVE" aria-describedby="emailHelp"></td>
             <td>
               <select class="form-control" name="tipoHddHVE">
-                <option selected>Seleccione...</option>
-                {{#each tipo_disco}}
-                  <option value="{{id}}">{{nombre}}</option>
-                {{/each}}
+                <option selected disabled>Seleccione...</option>
               </select>
             </td>
             <td>
@@ -23,6 +50,7 @@ function agregarFilaCapacidadEquipo() {
             </td>
           </tr>`;
   $("#filaInfoEquipo").append(fila);
+  listarTypeDisk();
 }
 
 let nextinputprocesamiento = 0;
@@ -33,15 +61,12 @@ function agregarFilaProcesamiento() {
             <th scope="row">${nextinputprocesamiento}</th>
             <td>
               <select class="form-control" name="nombreProcesador" id="exampleFormControlSelect1">
-                <option selected>Seleccione...</option>
-                {{#each procesador}}
-                  <option value="{{id}}">{{nombre}}</option>
-                {{/each}}
+                <option selected disabled>Seleccione...</option>
               </select>
             </td>
             <td>
               <div class="input-group">
-                <input type="number" name="velocidadProcesador" min="0" class="form-control">
+                <input type="number" name="velocidadProcesador" min="0" step="0.01" class="form-control">
                 <div class="input-group-append">
                   <span class="input-group-text" id="basic-addon2">GHz</span>
                 </div>
@@ -49,10 +74,7 @@ function agregarFilaProcesamiento() {
             </td>
             <td>
               <select class="form-control" name="tipoRAM" id="exampleFormControlSelect1">
-                <option selected>Seleccione...</option>
-                {{#each tipo_ram}}
-                  <option value="{{id}}">{{nombre}}</option>
-                {{/each}}
+                <option selected disabled>Seleccione...</option>
               </select>
             </td>
             <td>
@@ -65,6 +87,7 @@ function agregarFilaProcesamiento() {
             </td>
           </tr>`;
   $("#filaInfoProcesamiento").append(fila);
+  listarCpuRam();
 }
 
 $( document ).ready(function() {

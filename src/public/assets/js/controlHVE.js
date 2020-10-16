@@ -1,13 +1,39 @@
+function obtenerNit() {
+  if ($("select[name=empresaProveedorHVE]").val()) {
+    $.ajax({
+      url: "/formulariohve/obtener-nit",
+      method: "POST",
+      data: {
+        empresa_id: $("select[name=empresaProveedorHVE]").val()
+      },
+      dataType: "json"
+    }).done(msg => {
+      $("#nitEmpresaProveedor").val(msg.resp[0].nit)
+    })
+  }
+}
+
+function listarMethodPagos() {
+  $.ajax({
+    url: "/formulariohve/method-compra",
+    method: "GET",
+    dataType: "json"
+  }).done(msg => {
+    console.log('Data method pagos: ', msg.pagos);
+    msg.pagos.forEach(element => {
+      methodCompra = `<option value="${element.id}">${element.nombre}</option>`
+      $("select[name=tipoCompraHVE]").append(methodCompra);
+    });
+  });
+}
+
 
 $(document).ready(function () {
   contenidoCompra = `<div id="compraChecked" class="row mt-2">
                       <label for="" class="col-sm-5 col-lg-2 col-form-label txt-small">TIPO DE COMPRA:</label>
                       <div class="col-sm-2" id="selectTipoCompra">
                         <select name="tipoCompraHVE" class="custom-select mr-sm-2">
-                          <option selected>Seleccione...</option>
-                          {{#each tipo_compra}}
-                            <option value="{{id}}">{{nombre}}</option>
-                          {{/each}}
+                          <option selected disabled>Seleccione...</option>
                         </select>
                       </div>
                       <label for="" class="col-sm-5 col-lg-2 col-form-label txt-small">NUMERO DEL PROCESO:</label>
@@ -29,13 +55,13 @@ $(document).ready(function () {
   contenidoEstadoEquipo = `<div class="row mt-2" id="fechaBajaHVE">
                             <label class="col-sm-3 col-form-label">FECHA DE LA BAJA:</label>
                             <div class="col-sm-9">
-                              <input type="date" class="form-control" name="fechaBaja">
+                              <input type="date" class="form-control" name="fechaBajaHVE">
                             </div>
                           </div>
                           <div class="row mt-2" id="descripcionBajaHVE">
                             <label for="" class="col-sm-3 col-form-label">MOTIVO DE LA BAJA:</label>
                             <div class="col-sm-9">
-                              <textarea class="form-control" aria-label="With textarea"></textarea>
+                              <textarea class="form-control" aria-label="With textarea" name="motivoBajaHVE"></textarea>
                             </div>
                           </div>`;
 
@@ -43,6 +69,7 @@ $(document).ready(function () {
     if ($(this).val() == 1) {
       $("#comodatoChecked").remove();
       $("#contenidoAdquisicion").append(contenidoCompra);
+      listarMethodPagos();
     } else if ($(this).val() == 3) {
       $("#compraChecked").remove();
       $("#contenidoAdquisicion").append(contenidoComodato);
@@ -73,11 +100,18 @@ $(document).ready(function () {
     }
   });
 
-  $("select[name=empresaProveedorHVE]").change(function () {
-    console.log("Click", $(this).val());
+  $("select[name=empresaProveedorHVE]").change(() => obtenerNit());
+  
+  $("select[name=escanerAsignadoHVE]").change(function () {
+    if ($(this).val() == 1) {
+      $("input[name=marcaEscanerHVE]").removeAttr("disabled");
+      $("input[name=serialEscanerHVE]").removeAttr("disabled");
+      $("input[name=numInvEscanerHVE]").removeAttr("disabled");
+    } else {
+      $("input[name=marcaEscanerHVE]").prop("disabled", true);
+      $("input[name=serialEscanerHVE]").prop("disabled", true);
+      $("input[name=numInvEscanerHVE]").prop("disabled", true);
+    }
   });
-
-  /* var cadena = 'Hola "bienvenido a victorroblesweb" de Víctor Robles';
-  console.log(cadena.replace(/['"]+/g, '')); */
 
 });
