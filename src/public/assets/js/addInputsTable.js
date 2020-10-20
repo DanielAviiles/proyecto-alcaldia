@@ -1,9 +1,19 @@
-function listarTypeDisk() {
+// let iteracion = 0;
+function listarInfoDisk() {
   $.ajax({
     url: "/formulariohve/informcionEquipo",
     method: "GET",
     dataType: "json"
   }).done(msg => {
+    console.log('Length marca disco: ', msg.marcadisco.length);
+    msg.marcadisco.forEach(element => {
+      // iteracion++;
+      marcaDisk = `<option value="${element.id}">${element.nombre}</option>`
+      $("select[name=marcaHddHVE]").append(marcaDisk);
+      // console.log("Data: ",$(`select[name=marcaHddHVE]`));
+      // console.log("Iteracion: ", iteracion);
+    });
+    iteracion = 0;
     msg.typeDisk.forEach(element => {
       tipoDisk = `<option value="${element.id}">${element.nombre}</option>`
       $("select[name=tipoHddHVE]").append(tipoDisk);
@@ -11,7 +21,7 @@ function listarTypeDisk() {
   });
 }
 
-function listarCpuRam() {
+function listarCpu_Ram() {
   $.ajax({
     url: "/formulariohve/informcionEquipo",
     method: "GET",
@@ -19,11 +29,15 @@ function listarCpuRam() {
   }).done(msg => {
     msg.marcacpu.forEach(element => {
       marcaCPU = `<option value="${element.id}">${element.nombre}</option>`
-      $("select[name=nombreProcesador]").append(marcaCPU);
+      $("select[name=marcaCPUHVE]").append(marcaCPU);
+    });
+    msg.marcaram.forEach(element => {
+      marcaRAM = `<option value="${element.id}">${element.nombre}</option>`
+      $("select[name=nombreRAMHVE]").append(marcaRAM);
     });
     msg.typeRam.forEach(element => {
       tipoRam = `<option value="${element.id}">${element.nombre}</option>`
-      $("select[name=tipoRAM]").append(tipoRam);
+      $("select[name=tipoRAMHVE]").append(tipoRam);
     });
   });
 }
@@ -34,7 +48,11 @@ function agregarFilaCapacidadEquipo() {
   nextinputequipo++;
   fila = `<tr>
             <th scope="row">${nextinputequipo}</th>
-            <td><input type="text" class="form-control" name="marcaHddHVE" aria-describedby="emailHelp"></td>
+            <td>
+              <select class="form-control" name="marcaHddHVE">
+                <option selected disabled>Seleccione...</option>
+              </select>
+            </td>
             <td>
               <select class="form-control" name="tipoHddHVE">
                 <option selected disabled>Seleccione...</option>
@@ -50,54 +68,14 @@ function agregarFilaCapacidadEquipo() {
             </td>
           </tr>`;
   $("#filaInfoEquipo").append(fila);
-  listarTypeDisk();
-}
-
-let nextinputprocesamiento = 0;
-function agregarFilaProcesamiento() {
-  $("#rowSinRegistro2").remove();
-  nextinputprocesamiento++;
-  fila = `<tr>
-            <th scope="row">${nextinputprocesamiento}</th>
-            <td>
-              <select class="form-control" name="nombreProcesador" id="exampleFormControlSelect1">
-                <option selected disabled>Seleccione...</option>
-              </select>
-            </td>
-            <td>
-              <div class="input-group">
-                <input type="number" name="velocidadProcesador" min="0" step="0.01" class="form-control">
-                <div class="input-group-append">
-                  <span class="input-group-text" id="basic-addon2">GHz</span>
-                </div>
-              </div>
-            </td>
-            <td>
-              <select class="form-control" name="tipoRAM" id="exampleFormControlSelect1">
-                <option selected disabled>Seleccione...</option>
-              </select>
-            </td>
-            <td>
-              <div class="input-group">
-                <input type="number" name="velocidadRAM" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                  <span class="input-group-text" id="basic-addon2">MHz</span>
-                </div>
-              </div>
-            </td>
-          </tr>`;
-  $("#filaInfoProcesamiento").append(fila);
-  listarCpuRam();
+  listarInfoDisk();
 }
 
 $( document ).ready(function() {
   filaequipo = `<tr id="rowSinRegistro1">
                   <th scope="row" colspan="4" class="text-center">No hay registros</th>
                 </tr>`;
-  filaprocesamiento = `<tr id="rowSinRegistro2">
-                        <th scope="row" colspan="5" class="text-center">No hay registros</th>
-                      </tr>`;
-  
   $("#filaInfoEquipo").append(filaequipo);
-  $("#filaInfoProcesamiento").append(filaprocesamiento);
+
+  listarCpu_Ram();
 });

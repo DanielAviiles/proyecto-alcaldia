@@ -349,28 +349,70 @@
                   <div class="card">
                     <div class="card-header">
                       <div class="row">
-                        <h5 class="col-lg-7"><strong>CAPACIDAD DE PROCESAMIENTO DEL EQUIPO.</strong></h5>
-                        <div class="col-lg-5">
-                          <button type="button" class="btn btn-success float-right" onclick="agregarFilaProcesamiento()">Agregar</button>
-                        </div>
+                        <h5 class="col-lg-12"><strong>CAPACIDAD DE PROCESAMIENTO DEL EQUIPO.</strong></h5>
                       </div>
                     </div>
                     <div class="card-body">
                       <div class="row">
+                        <div class="col-lg-12">
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="row">
+                                <label for="" class="col-form-label col-lg-2">Procesador</label>
+                                <div class="col-lg-4">
+                                  <select name="marcaCPUHVE" class="custom-select mr-sm-4">
+                                    <option selected disabled>Seleccione...</option>
+                                  </select>
+                                </div>
+
+                                <label for="" class="col-form-label col-lg-2">Frecuencia</label>
+                                <div class="input-group col-lg-4">
+                                  <input type="number" min="1" max="6" step="0.01" class="form-control" name="frecuenciaCPUHVE">
+                                  <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon2">GHz</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
                         <div class="col-md-12">
-                          <table class="table table-responsive-sm table-responsive-lg table-bordered">
-                            <thead class="thead-dark">
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Procesador</th>
-                                <th scope="col">Frecuencia CPU</th>
-                                <th scope="col">Tipo de RAM</th>
-                                <th scope="col">Frecuencia RAM</th>
-                              </tr>
-                            </thead>
-                            <tbody id="filaInfoProcesamiento">
-                            </tbody>
-                          </table>
+                          <div class="card">
+                            <div class="card-body">
+                              <div class="row">
+                                <label for="" class="col-form-label col-lg-2">RAM</label>
+                                <div class="col-lg-4">
+                                  <select name="nombreRAMHVE" class="custom-select mr-sm-4">
+                                    <option selected disabled>Seleccione...</option>
+                                  </select>
+                                </div>
+
+                                <label for="" class="col-form-label col-lg-2">Cantidad</label>
+                                <div class="col-lg-4">
+                                  <input type="number" name="cantidadRAMHVE" min="1" class="form-control">
+                                </div>
+                              </div>
+                              <div class="row mt-2">
+                                <label for="" class="col-form-label col-lg-2">Tipo RAM</label>
+                                <div class="col-lg-4">
+                                  <select name="tipoRAMHVE" class="custom-select mr-sm-4">
+                                    <option selected disabled>Seleccione...</option>
+                                  </select>
+                                </div>
+
+                                <label for="" class="col-form-label col-lg-2">Frecuencia</label>
+                                <div class="input-group col-lg-4">
+                                  <input type="number" name="frecuenciaRAMHVE" min="800" max="5000" class="form-control">
+                                  <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon2">MHz</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -390,7 +432,7 @@
                       <div class="row">
                         <div class="form-group col-lg-3">
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" name="unidadlectoraHVE">
+                            <input class="form-check-input" type="checkbox" name="unidadlectoraHVE" value="0">
                             <label class="form-check-label" for="inlineCheckbox1">UNIDAD DE DVD / CD</label>
                           </div>
                         </div>
@@ -403,37 +445,37 @@
                       <div class="row">
                         <label for="" class="col-sm-2 col-form-label txt-small">MARCA DEL TECLADO:</label>
                         <div class="col-sm-4 mt-2">
-                          <input type="text" class="form-control" value="">
+                          <input type="text" class="form-control" name="marcaTecladoHVE">
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">MARCA DEL MOUSE:</label>
                         <div class="col-sm-4 mt-2">
-                          <input type="text" class="form-control" value="">
+                          <input type="text" class="form-control" name="marcaMouseHVE">
                         </div>
                       </div>
 
                       <div class="row">
                         <label for="" class="col-sm-2 col-form-label txt-small">CONEXION DEL TECLADO:</label>
                         <div class="col-sm-2 mt-2">
-                          <select name="" class="custom-select mr-sm-2">
+                          <select name="conexionTecladoHVE" class="custom-select mr-sm-2">
                             <option selected disabled>Seleccione...</option>
                             <option value="1">USB</option>
-                            <option value="2">PS2</option>
+                            <option value="0">PS2</option>
                           </select>
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">CONEXION DEL MOUSE:</label>
                         <div class="col-sm-2 mt-2">
-                          <select name="" class="custom-select mr-sm-2">
+                          <select name="conexionMouseHVE" class="custom-select mr-sm-2">
                             <option selected disabled>Seleccione...</option>
                             <option value="1">USB</option>
-                            <option value="2">PS2</option>
+                            <option value="0">PS2</option>
                           </select>
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">LECTOR DE TARJETAS:</label>
                         <div class="col-sm-2 mt-2">
-                          <select name="" class="custom-select mr-sm-2">
+                          <select name="lectorTarjetasHVE" class="custom-select mr-sm-2">
                             <option selected disabled>Seleccione...</option>
                             <option value="1">Sí</option>
-                            <option value="2">No</option>
+                            <option value="0">No</option>
                           </select>
                         </div>
                       </div>
@@ -441,18 +483,18 @@
                       <div class="row">
                         <label for="" class="col-sm-2 col-form-label txt-small">TARJETA DE VIDEO:</label>
                         <div class="col-sm-4 mt-2">
-                          <select name="" class="custom-select mr-sm-2">
+                          <select name="tajetaVideoHVE" class="custom-select mr-sm-2">
                             <option selected disabled>Seleccione...</option>
                             <option value="1">Sí</option>
-                            <option value="2">No</option>
+                            <option value="0">No</option>
                           </select>
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">UNIDAD QUEMADORA:</label>
                         <div class="col-sm-4 mt-2">
-                          <select name="" class="custom-select mr-sm-2">
+                          <select name="unidadQuemadoraHVE" class="custom-select mr-sm-2">
                             <option selected disabled>Seleccione...</option>
                             <option value="1">Sí</option>
-                            <option value="2">No</option>
+                            <option value="0">No</option>
                           </select>
                         </div>
                       </div>
@@ -460,13 +502,13 @@
                       <div class="row mt-3">
                         <div class="col-lg-6">
                           <div class="form-check form-check-inline float-lg-right">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1">
+                            <input class="form-check-input" type="checkbox" name="estabilizadorHVE" value="0">
                             <label class="form-check-label" for="inlineCheckbox1">ESTABILIZADOR</label>
                           </div>
                         </div>
                         <div class="col-lg-6">
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="2">
+                            <input class="form-check-input" type="checkbox" name="upsHVE" value="0">
                             <label class="form-check-label" for="inlineCheckbox1">UPS REGULADA</label>
                           </div>
                         </div>
@@ -559,7 +601,7 @@
                           <select name="escanerAsignadoHVE" class="custom-select mr-sm-2">
                             <option selected disabled>Seleccione...</option>
                             <option value="1">Si</option>
-                            <option value="2">No</option>
+                            <option value="0">No</option>
                           </select>
                         </div>
                         <label for="" class="col-sm-2 col-form-label txt-small">MARCA DEL ESCANER:</label>

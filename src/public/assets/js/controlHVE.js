@@ -83,11 +83,33 @@ $(document).ready(function () {
   $("input[name=unidadlectoraHVE]:checkbox").change(function () {
     iteradorChck++;
     if (iteradorChck % 2) {
+      $(this).val("1");
       $("#dvdInput").removeAttr("disabled");
       $("#dvdInput").focus();
     } else {
+      $(this).val("0")
       $("#dvdInput").val("");
       $("#dvdInput").prop("disabled", true);
+    }
+  });
+
+  let iteradorChckEstabilidaor=0
+  $("input[name=estabilizadorHVE]:checkbox").change(function () {
+    iteradorChckEstabilidaor++;
+    if (iteradorChckEstabilidaor % 2) {
+      $(this).val("1");
+    } else {
+      $(this).val("0")
+    }
+  });
+
+  let iteradorChckUPS=0
+  $("input[name=upsHVE]:checkbox").change(function () {
+    iteradorChckUPS++;
+    if (iteradorChckUPS % 2) {
+      $(this).val("1");
+    } else {
+      $(this).val("0")
     }
   });
 
