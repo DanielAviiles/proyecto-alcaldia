@@ -21,23 +21,22 @@ const pool = require('../database');
       tipo_ordenador,marcaOrdenador, tipo_monitor, tipo_impresora, usuario
     });
   });
+  
   /* CONSULTAS AJAX PARA FORMULARIOHVE. START */
     router.get('/formulariohve/informcionEquipo', async (req, res) => {
-      let infoEquipo = {};
       const marcaDisco = await pool.query(`SELECT * FROM marca_disco`);
       const tipo_disco = await pool.query(`SELECT * FROM tipo_disco`);
       const procesador = await pool.query(`SELECT * FROM marca_procesador`);
       const tipo_ram = await pool.query(`SELECT * FROM tipo_ram`);
       const ram = await pool.query(`SELECT * FROM marca_ram`);
-  
-      infoEquipo = {
+
+      res.json({
         marcadisco: marcaDisco,
         typeDisk: tipo_disco,
         typeRam: tipo_ram,
         marcacpu: procesador,
         marcaram: ram
-      };
-      res.json(infoEquipo);
+      });
     });
     router.get('/formulariohve/method-compra', async (req, res) => {
       const tipo_compra = await pool.query(`SELECT * FROM tipo_compra`);
