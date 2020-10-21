@@ -5,18 +5,19 @@ function listarInfoDisk() {
     method: "GET",
     dataType: "json"
   }).done(msg => {
-    console.log('Length marca disco: ', msg.marcadisco.length);
+    // console.log('Length marca disco: ', msg.marcadisco.length);
+    // let iterador = 0;
     msg.marcadisco.forEach(element => {
-      // iteracion++;
+      // iterador++;
       marcaDisk = `<option value="${element.id}">${element.nombre}</option>`
-      $("select[name=marcaHddHVE]").append(marcaDisk);
+      $(`select[name=marcaHddHVE]`).append(marcaDisk);
       // console.log("Data: ",$(`select[name=marcaHddHVE]`));
-      // console.log("Iteracion: ", iteracion);
     });
-    iteracion = 0;
+    // iterador = 0;
     msg.typeDisk.forEach(element => {
+      // iterador++;
       tipoDisk = `<option value="${element.id}">${element.nombre}</option>`
-      $("select[name=tipoHddHVE]").append(tipoDisk);
+      $(`select[name=tipoHddHVE]`).append(tipoDisk);
     });
   });
 }
