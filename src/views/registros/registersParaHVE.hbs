@@ -28,7 +28,25 @@
                           <div class="col-form-label"><b>CARGOS</b></div>
                         </div>
                         <div class="col-lg-4">
-                          <button class="btn btn-success float-lg-right"><i class="fas fa-plus-circle"></i></button>
+                          <button type="button" class="btn btn-success float-lg-right" data-toggle="modal" data-target="#addCargo">
+                            <i class="fas fa-plus-circle"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <!-- Modal -->
+                      <div class="modal fade" id="addCargo" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header bg-secondary">
+                              <h5 class="modal-title text-white" id="staticBackdropLabel">Agregar un cargo</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <form action="/registros/informesAdicionales/1" method="POST">
+                              {{> modalAddRegistros}}
+                            </form>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -48,10 +66,39 @@
                                 <th scope="col">{{id}}</th>
                                 <td>{{nombre}}</td>
                                 <td>
-                                  <button class="btn btn-info"><i class="fas fa-edit"></i></button>
-                                  <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editCargo{{id}}">
+                                    <i class="fas fa-edit"></i>
+                                  </button>
+                                  <button type="button" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 </td>
                               </tr>
+                              <!-- Modal -->
+                              <div class="modal fade" id="editCargo{{id}}" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header bg-secondary">
+                                      <h5 class="modal-title text-white" id="staticBackdropLabel">Modificar cargo</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <form action="/registros/edit-registros/{{id}}/1" method="POST">
+                                      <div class="modal-body">
+                                        <div class="col-lg-12">
+                                          <div class="row">
+                                            <label for="staticEmail2" class="col-form-label col-lg-3">Nombre:</label>
+                                            <input type="text" class="form-control col-lg-9" name="nombreModelRegistro" value="{{nombre}}">
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Modificar</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
                             {{/each}}
                           </tbody>
                         </table>
@@ -68,7 +115,25 @@
                           <div class="col-form-label"><b>DEPENDENCIAS</b></div>
                         </div>
                         <div class="col-lg-4">
-                          <button class="btn btn-success float-lg-right"><i class="fas fa-plus-circle"></i></button>
+                          <button type="button" class="btn btn-success float-lg-right" data-toggle="modal" data-target="#addDependencia">
+                            <i class="fas fa-plus-circle"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <!-- Modal -->
+                      <div class="modal fade" id="addDependencia" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header bg-secondary">
+                              <h5 class="modal-title text-white" id="staticBackdropLabel">Agregar una Dependencia</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <form action="/registros/informesAdicionales/2" method="POST">
+                              {{> modalAddRegistros}}
+                            </form>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -88,10 +153,39 @@
                                 <th scope="col">{{id}}</th>
                                 <td>{{nombre}}</td>
                                 <td>
-                                  <button class="btn btn-info"><i class="fas fa-edit"></i></button>
+                                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editDependencia{{id}}">
+                                    <i class="fas fa-edit"></i>
+                                  </button>
                                   <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 </td>
                               </tr>
+                              <!-- Modal -->
+                              <div class="modal fade" id="editDependencia{{id}}" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header bg-secondary">
+                                      <h5 class="modal-title text-white" id="staticBackdropLabel">Modificar Dependencia</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <form action="/registros/edit-registros/{{id}}/2" method="POST">
+                                      <div class="modal-body">
+                                        <div class="col-lg-12">
+                                          <div class="row">
+                                            <label for="staticEmail2" class="col-form-label col-lg-3">Nombre:</label>
+                                            <input type="text" class="form-control col-lg-9" name="nombreModelRegistro" value="{{nombre}}">
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Modificar</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
                             {{/each}}
                           </tbody>
                         </table>
@@ -108,7 +202,25 @@
                           <div class="col-form-label"><b>AREA DE TRABAJO</b></div>
                         </div>
                         <div class="col-lg-4">
-                          <button class="btn btn-success float-lg-right"><i class="fas fa-plus-circle"></i></button>
+                          <button type="button" class="btn btn-success float-lg-right" data-toggle="modal" data-target="#addAreaT">
+                            <i class="fas fa-plus-circle"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <!-- Modal -->
+                      <div class="modal fade" id="addAreaT" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                          <div class="modal-content">
+                            <div class="modal-header bg-secondary">
+                              <h5 class="modal-title text-white" id="staticBackdropLabel">Agregar Area de trabajo</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <form action="/registros/informesAdicionales/3" method="POST">
+                              {{> modalAddRegistros}}
+                            </form>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -123,15 +235,44 @@
                             </tr>
                           </thead>
                           <tbody>
-                            {{#each dependencias}}
+                            {{#each areaTrabajo}}
                               <tr>
                                 <th scope="col">{{id}}</th>
                                 <td>{{nombre}}</td>
                                 <td>
-                                  <button class="btn btn-info"><i class="fas fa-edit"></i></button>
+                                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#editAreaT{{id}}">
+                                    <i class="fas fa-edit"></i>
+                                  </button>
                                   <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 </td>
                               </tr>
+                              <!-- Modal -->
+                              <div class="modal fade" id="editAreaT{{id}}" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header bg-secondary">
+                                      <h5 class="modal-title text-white" id="staticBackdropLabel">Modificar Dependencia</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <form action="/registros/edit-registros/{{id}}/3" method="POST">
+                                      <div class="modal-body">
+                                        <div class="col-lg-12">
+                                          <div class="row">
+                                            <label for="staticEmail2" class="col-form-label col-lg-3">Nombre:</label>
+                                            <input type="text" class="form-control col-lg-9" name="nombreModelRegistro" value="{{nombre}}">
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Modificar</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
                             {{/each}}
                           </tbody>
                         </table>

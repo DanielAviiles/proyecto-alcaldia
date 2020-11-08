@@ -12,6 +12,57 @@ async function listarTipoImpresora() { return await formHVEModel.showTipoImpreso
 async function listarUsuario() { return await formHVEModel.showUsuario(); }
 
 async function listarSecretariaComplementos() { return await formHVEModel.showSecretariaComplementos(); }
+async function insertarCargo(req) {
+  let { nombreModelRegistro } = req.body;
+  return await formHVEModel.insertCargo(nombreModelRegistro);
+}
+async function insertarDependencia(req) {
+  let { nombreModelRegistro } = req.body;
+  return await formHVEModel.insertDependencia(nombreModelRegistro);
+}
+async function insertarAreaT(req) {
+  let { nombreModelRegistro } = req.body;
+  return await formHVEModel.insertAreaT(nombreModelRegistro);
+}
+
+async function insertarEmpresa(req) {
+  const {nombreModalEmpresa, nitEmpresa} = req.body;
+  const infoEmpresa = {
+    nombre: nombreModalEmpresa,
+    nit: nitEmpresa
+  }
+  await formHVEModel.insertEmpresaProveedor(infoEmpresa);
+}
+async function insertarSecretaria(req) {
+  const {nombreModelRegistro, optDependencia} = req.body;
+  const infoSecretaria = {
+    nombre: nombreModalSecretaria,
+    dependencia_id: optDependencia
+  }
+  await formHVEModel.insertSecretaria(infoSecretaria);
+}
+
+async function modificarCargo(req, idCargo) {
+  const {nombreModelRegistro} = req.body;
+  const updateCargo = {
+    nombre: nombreModelRegistro
+  }
+  await formHVEModel.modifyCargo(updateCargo, idCargo);
+}
+async function modificarDependencia(req, idDependencia) {
+  const {nombreModelRegistro} = req.body;
+  const updateDependencia = {
+    nombre: nombreModelRegistro
+  }
+  await formHVEModel.modifyDependencia(updateDependencia, idDependencia);
+}
+async function modificarAreaT(req, idAreaT) {
+  const {nombreModelRegistro} = req.body;
+  const updateAreaT = {
+    nombre: nombreModelRegistro
+  }
+  await formHVEModel.modifyAreaT(updateAreaT, idAreaT);
+}
 
 // CONFIG AJAX REQUEST. START
 async function listarMarcaDisco(){ return await formHVEModel.showMarcaDisco() }
@@ -52,4 +103,12 @@ module.exports = {
   listarInfoEmpresaProveedor,
   addEquipoHVE,
   listarSecretariaComplementos,
+  insertarCargo,
+  insertarDependencia,
+  insertarAreaT,
+  insertarEmpresa,
+  insertarSecretaria,
+  modificarCargo,
+  modificarDependencia,
+  modificarAreaT,
 };

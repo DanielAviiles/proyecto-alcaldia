@@ -21,6 +21,27 @@ async function showSecretariaComplementos() {
                             dependencia
                           WHERE secretaria.dependencia_id = dependencia.id`);
 }
+async function insertCargo(nombreCargo) {
+  const infoCargo = { nombre: nombreCargo };
+  return await pool.query('INSERT INTO cargo SET ?', [infoCargo]);
+}
+async function insertDependencia(nombreDependencia) {
+  const infoDependencia = { nombre: nombreDependencia };
+  return await pool.query('INSERT INTO dependencia SET ?', [infoDependencia]);
+}
+async function insertAreaT(nombreAreaT) {
+  const infoAreaT = { nombre: nombreAreaT };
+  return await pool.query('INSERT INTO area_trabajo SET ?', [infoAreaT]);
+}
+
+async function insertEmpresaProveedor(infoEmpresa) { await pool.query('INSERT INTO empresa_proveedor SET ?', [infoEmpresa]); }
+async function insertSecretaria(infoSecretaria) { await pool.query('INSERT INTO secretaria SET ?', [infoSecretaria]); }
+
+async function modifyCargo(infoCargo, idcargo) {await pool.query('UPDATE cargo SET ? WHERE id=?', [infoCargo, idcargo])}
+async function modifyDependencia(infoDependencia, idDependencia) {
+  await pool.query('UPDATE dependencia SET ? WHERE id=?', [infoDependencia, idDependencia])
+}
+async function modifyAreaT(infoAreaT, idAreaT) {await pool.query('UPDATE area_trabajo SET ? WHERE id=?', [infoAreaT, idAreaT])}
 
 // CONFIG AJAX REQUEST. START
 async function showMarcaDisco(){return await pool.query('SELECT * FROM marca_disco');}
@@ -227,5 +248,13 @@ module.exports = {
   showInfoEmpresaProveedor,
   insertEquipoHVE,
   showSecretariaComplementos,
+  insertCargo,
+  insertDependencia,
+  insertAreaT,
+  insertEmpresaProveedor,
+  insertSecretaria,
+  modifyCargo,
+  modifyDependencia,
+  modifyAreaT,
 };
 
