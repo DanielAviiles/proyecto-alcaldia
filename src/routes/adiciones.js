@@ -63,4 +63,17 @@ router.post('/edit-registros/:idElement/:seccion', async (req, res) => {
 
   res.redirect('/registros/informesAdicionales');
 });
+
+router.post('/edit-secundarios/:idElement/:seccion', async (req, res) => {
+  const { idElement, seccion } = req.params;
+  if (seccion == 1) {
+    console.log('Empresaproveedor');
+    await configController.modificarEmpresaProveedor(req, idElement);
+  } else {
+    console.log('Secretaria');
+    await configController.modificarSecretaria(req, idElement);
+  }
+  res.redirect('/registros/secundarios');
+});
+
 module.exports = router;

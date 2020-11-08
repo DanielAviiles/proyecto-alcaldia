@@ -41,7 +41,14 @@ async function modifyCargo(infoCargo, idcargo) {await pool.query('UPDATE cargo S
 async function modifyDependencia(infoDependencia, idDependencia) {
   await pool.query('UPDATE dependencia SET ? WHERE id=?', [infoDependencia, idDependencia])
 }
-async function modifyAreaT(infoAreaT, idAreaT) {await pool.query('UPDATE area_trabajo SET ? WHERE id=?', [infoAreaT, idAreaT])}
+async function modifyAreaT(infoAreaT, idAreaT) { await pool.query('UPDATE area_trabajo SET ? WHERE id=?', [infoAreaT, idAreaT]) }
+
+async function modifyEmpresaProveedor(infoEmpresa, idEmpresa) {
+  await pool.query('UPDATE empresa_proveedor SET ? WHERE id=?', [infoEmpresa, idEmpresa]);
+}
+async function modifySecretaria(infoSecretaria, idSecretaria) {
+  await pool.query('UPDATE secretaria SET ? WHERE id=?', [infoSecretaria, idSecretaria]);
+}
 
 // CONFIG AJAX REQUEST. START
 async function showMarcaDisco(){return await pool.query('SELECT * FROM marca_disco');}
@@ -256,5 +263,7 @@ module.exports = {
   modifyCargo,
   modifyDependencia,
   modifyAreaT,
+  modifyEmpresaProveedor,
+  modifySecretaria,
 };
 

@@ -86,10 +86,49 @@
                                 <td>{{nombre}}</td>
                                 <td>{{nit}}</td>
                                 <td>
-                                  <button class="btn btn-info"><i class="fas fa-edit"></i></button>
+                                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modifyEmpresa{{id}}">
+                                    <i class="fas fa-edit"></i>
+                                  </button>
                                   <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 </td>
                               </tr>
+                              <!-- Modal -->
+                              <div class="modal fade" id="modifyEmpresa{{id}}" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header bg-secondary">
+                                      <h5 class="modal-title text-white" id="staticBackdropLabel">Agregar una Empresa / Proveedora</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <form action="/registros/edit-secundarios/{{id}}/1" method="POST">
+                                      <div class="modal-body">
+                                        <div class="row">
+                                          <div class="col-lg-12">
+                                            <div class="form-group">
+                                              <label for="formGroupExampleInput">Nombre Empresa / Proveedora:</label>
+                                              <input type="text" class="form-control" name="nombreModalEmpresa" value="{{nombre}}">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-lg-12">
+                                            <div class="form-group">
+                                              <label for="formGroupExampleInput2">NIT:</label>
+                                              <input type="text" class="form-control" name="nitEmpresa" value="{{nit}}">
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Modificar</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
                             {{/each}}
                           </tbody>
                         </table>
@@ -172,10 +211,54 @@
                                 <td>{{nameSecretaria}}</td>
                                 <td>{{nameDependencia}}</td>
                                 <td>
-                                  <button class="btn btn-info"><i class="fas fa-edit"></i></button>
+                                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modifySecretaria{{id}}">
+                                    <i class="fas fa-edit"></i>
+                                  </button>
                                   <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 </td>
                               </tr>
+                              <!-- Modal -->
+                              <div class="modal fade" id="modifySecretaria{{id}}" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header bg-secondary">
+                                      <h5 class="modal-title text-white" id="staticBackdropLabel">Modificar Secretaria</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <form action="/registros/edit-secundarios/{{id}}/2" method="POST">
+                                      <div class="modal-body">
+                                        <div class="row">
+                                          <div class="col-lg-12">
+                                            <div class="form-group">
+                                              <label for="formGroupExampleInput">Nombre Secretaria</label>
+                                              <input type="text" class="form-control" name="nombreModalSecretaria" value="{{nameSecretaria}}">
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-lg-12">
+                                            <div class="form-group">
+                                              <label for="formGroupExampleInput2">Dependencia a la que pertenece:</label>
+                                              <select name="optDependencia" class="form-control form-control-lg">
+                                                <option disabled selected>{{nameDependencia}}</option>
+                                                {{#each ../dependencias}}
+                                                  <option value="{{id}}">{{nombre}}</option>
+                                                {{/each}}
+                                              </select>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Modificar</button>
+                                      </div>
+                                    </form>
+                                  </div>
+                                </div>
+                              </div>
                             {{/each}}
                           </tbody>
                         </table>

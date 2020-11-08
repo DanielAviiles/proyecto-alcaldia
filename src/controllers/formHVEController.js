@@ -64,6 +64,23 @@ async function modificarAreaT(req, idAreaT) {
   await formHVEModel.modifyAreaT(updateAreaT, idAreaT);
 }
 
+async function modificarEmpresaProveedor(req, idEmpresa) {
+  const { nombreModalEmpresa, nitEmpresa } = req.body;
+  const updateEmpresa = {
+    nombre: nombreModalEmpresa,
+    nit: nitEmpresa
+  }
+  await formHVEModel.modifyEmpresaProveedor(updateEmpresa, idEmpresa);
+}
+async function modificarSecretaria(req, idSecretaria) {
+  const {nombreModalSecretaria, optDependencia} = req.body;
+  const updateSecretaria = {
+    nombre: nombreModalSecretaria,
+    dependencia_id: optDependencia
+  }
+  await formHVEModel.modifySecretaria(updateSecretaria, idSecretaria);
+}
+
 // CONFIG AJAX REQUEST. START
 async function listarMarcaDisco(){ return await formHVEModel.showMarcaDisco() }
 async function listarTipoDisco(){ return await formHVEModel.showTipoDisco() }
@@ -111,4 +128,6 @@ module.exports = {
   modificarCargo,
   modificarDependencia,
   modificarAreaT,
+  modificarEmpresaProveedor,
+  modificarSecretaria,
 };
