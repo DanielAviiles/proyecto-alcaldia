@@ -16,12 +16,21 @@
         </a>
         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="/formulariofre">Ficha de revision de equipos</a>
-              <a class="nav-link" href="/formulariofte">Ficha tecnica del equipo</a>
-              <a class="nav-link" href="/formulariomde">Formato de mantenimiento de equipos</a>
-              <a class="nav-link" href="/formulariohve">Formato hoja de vida del equipo</a>
+              <a class="nav-link" href="/formulariofre">
+                <i class="fas fa-wrench"></i><div class="ml-2">Ficha RDE</div>
+              </a>
+              <a class="nav-link" href="/formulariofte">
+                <i class="fas fa-bookmark"></i><div class="ml-2">Ficha TDE</div>
+              </a>
+              <a class="nav-link" href="/formulariomde">
+                <i class="fas fa-tools"></i><div class="ml-2">Formato MDE</div>
+              </a>
+              <a class="nav-link" href="/formulariohve">
+                <i class="fas fa-desktop"></i><div class="ml-2">Formato HVE</div>
+              </a>
             </nav>
         </div>
+        
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrdenadores" aria-expanded="false" aria-controls="collapseLayouts">
           <div class="sb-nav-link-icon"><i class="fas fa-list-ul"></i></div>
           Intereses
@@ -29,30 +38,40 @@
         </a>
         <div class="collapse" id="collapseOrdenadores" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="/ordenadores/lista-ordenadores">Lista Ordenadores Funcionando</a>
+              <a class="nav-link" href="/ordenadores/lista-ordenadores">
+                <i class="fas fa-desktop"></i><div class="ml-2">Lista Ordenadores</div>
+              </a>
             </nav>
         </div>
 
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-          <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-          Pages
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRegistros" aria-expanded="false" aria-controls="collapseLayouts">
+          <div class="sb-nav-link-icon"><i class="fas fa-coins"></i></div>
+          Registros
           <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
         </a>
-        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+        <div class="collapse" id="collapseRegistros" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
           <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                Authentication
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#principales" aria-expanded="false" aria-controls="HVEOrdenador">
+                Datos principales
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
               </a>
-              <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+              <div class="collapse" id="principales" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="/login">Login</a>
-                  <a class="nav-link" href="/register">Register</a>
-                  <a class="nav-link" href="#">Forgot Password</a>
+                  <a class="nav-link" href="/registros/informesAdicionales">Area trabajo, cargo y dependencia</a>
+                </nav>
+              </div>
+              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Secundarios" aria-expanded="false" aria-controls="HVEOrdenador">
+                Datos Secundarios
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+              </a>
+              <div class="collapse" id="Secundarios" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="/registros/secundarios">Empresa proveedor y Secretaria</a>
                 </nav>
               </div>
           </nav>
         </div>
+
       </div>
     </div>
     <div class="sb-sidenav-footer">

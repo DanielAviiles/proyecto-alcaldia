@@ -11,6 +11,17 @@ async function showTipoMonitor() { return await pool.query('SELECT * FROM tipo_m
 async function showTipoImpresora() { return await pool.query('SELECT * FROM tipo_impresora'); }
 async function showUsuario() { return await pool.query('SELECT id, nombre_completo FROM usuario'); }
 
+async function showSecretariaComplementos() {
+  return await pool.query(`SELECT 
+                            secretaria.id,
+                            secretaria.nombre nameSecretaria,
+                            dependencia.nombre nameDependencia 
+                          FROM
+                            secretaria,
+                            dependencia
+                          WHERE secretaria.dependencia_id = dependencia.id`);
+}
+
 // CONFIG AJAX REQUEST. START
 async function showMarcaDisco(){return await pool.query('SELECT * FROM marca_disco');}
 async function showTipoDisco(){return await pool.query('SELECT * FROM tipo_disco');}
@@ -215,5 +226,6 @@ module.exports = {
   showTipoCompra,
   showInfoEmpresaProveedor,
   insertEquipoHVE,
+  showSecretariaComplementos,
 };
 

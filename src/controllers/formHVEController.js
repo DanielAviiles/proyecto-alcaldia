@@ -11,6 +11,8 @@ async function listarTipoMonitor() { return await formHVEModel.showTipoMonitor()
 async function listarTipoImpresora() { return await formHVEModel.showTipoImpresora(); }
 async function listarUsuario() { return await formHVEModel.showUsuario(); }
 
+async function listarSecretariaComplementos() { return await formHVEModel.showSecretariaComplementos(); }
+
 // CONFIG AJAX REQUEST. START
 async function listarMarcaDisco(){ return await formHVEModel.showMarcaDisco() }
 async function listarTipoDisco(){ return await formHVEModel.showTipoDisco() }
@@ -49,4 +51,5 @@ module.exports = {
   listarTipoCompra,
   listarInfoEmpresaProveedor,
   addEquipoHVE,
+  listarSecretariaComplementos,
 };
