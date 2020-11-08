@@ -42,13 +42,19 @@ async function modifyDependencia(infoDependencia, idDependencia) {
   await pool.query('UPDATE dependencia SET ? WHERE id=?', [infoDependencia, idDependencia])
 }
 async function modifyAreaT(infoAreaT, idAreaT) { await pool.query('UPDATE area_trabajo SET ? WHERE id=?', [infoAreaT, idAreaT]) }
-
 async function modifyEmpresaProveedor(infoEmpresa, idEmpresa) {
   await pool.query('UPDATE empresa_proveedor SET ? WHERE id=?', [infoEmpresa, idEmpresa]);
 }
 async function modifySecretaria(infoSecretaria, idSecretaria) {
   await pool.query('UPDATE secretaria SET ? WHERE id=?', [infoSecretaria, idSecretaria]);
 }
+
+async function deleteCargo(idCargo) { await pool.query('DELETE FROM cargo WHERE id=?', [idCargo]); }
+async function deleteDependencia(idDependencia) { await pool.query('DELETE FROM dependencia WHERE id=?', [idDependencia]); }
+async function deleteAreaT(idAreaT) { await pool.query('DELETE FROM area_trabajo WHERE id=?', [idAreaT]); }
+
+async function deleteEmpresa(idEmpresa) { await pool.query('DELETE FROM empresa_proveedor WHERE id=?', [idEmpresa]); }
+async function deleteSecretaria(idSecretaria) { await pool.query('DELETE FROM secretaria WHERE id=?', [idSecretaria]); }
 
 // CONFIG AJAX REQUEST. START
 async function showMarcaDisco(){return await pool.query('SELECT * FROM marca_disco');}
@@ -265,5 +271,10 @@ module.exports = {
   modifyAreaT,
   modifyEmpresaProveedor,
   modifySecretaria,
+  deleteCargo,
+  deleteDependencia,
+  deleteAreaT,
+  deleteEmpresa,
+  deleteSecretaria,
 };
 

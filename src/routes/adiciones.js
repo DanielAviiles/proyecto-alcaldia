@@ -76,4 +76,26 @@ router.post('/edit-secundarios/:idElement/:seccion', async (req, res) => {
   res.redirect('/registros/secundarios');
 });
 
+router.get('/delete-informesAdicionales/:idElement/:seccion', async (req, res) => {
+  const { idElement, seccion } = req.params;
+  if (seccion == 1) {
+    await configController.eliminarCargo(idElement);
+  } else if (seccion == 2) {
+    await configController.eliminarDependencia(idElement);
+  } else {
+    await configController.eliminarAreaT(idElement);
+  }
+  res.redirect(req.headers.referer);
+});
+
+router.get('/delete-secundarios/:idElement/:seccion', async (req, res) => {
+  const { idElement, seccion } = req.params;
+  if (seccion == 1) {
+    await configController.eliminarEmpresa(idElement);
+  } else {
+    await configController.eliminarSecretaria(idElement);
+  }
+  res.redirect(req.headers.referer);
+});
+
 module.exports = router;

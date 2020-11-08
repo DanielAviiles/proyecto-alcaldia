@@ -89,7 +89,9 @@
                                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modifyEmpresa{{id}}">
                                     <i class="fas fa-edit"></i>
                                   </button>
-                                  <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteEmpresa{{id}}">
+                                    <i class="fas fa-trash"></i>
+                                  </button>
                                 </td>
                               </tr>
                               <!-- Modal -->
@@ -126,6 +128,27 @@
                                         <button type="submit" class="btn btn-primary">Modificar</button>
                                       </div>
                                     </form>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- Modal Eliminar -->
+                              <div class="modal fade" id="deleteEmpresa{{id}}" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header bg-warning">
+                                      <h5 class="modal-title text-white" id="staticBackdropLabel">Eliminar registro de {{nombre}}</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p>Esta seguro que desea eliminar este registro?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                      <a href="/registros/delete-secundarios/{{id}}/1" class="btn btn-danger">Eliminar</a>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -214,7 +237,9 @@
                                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modifySecretaria{{id}}">
                                     <i class="fas fa-edit"></i>
                                   </button>
-                                  <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteSecretaria{{id}}">
+                                    <i class="fas fa-trash"></i>
+                                  </button>
                                 </td>
                               </tr>
                               <!-- Modal -->
@@ -256,6 +281,27 @@
                                         <button type="submit" class="btn btn-primary">Modificar</button>
                                       </div>
                                     </form>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- Modal Eliminar -->
+                              <div class="modal fade" id="deleteSecretaria{{id}}" data-backdrop="static" data-keyboard="false" tabindex="-1">
+                                <div class="modal-dialog modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header bg-warning">
+                                      <h5 class="modal-title text-white" id="staticBackdropLabel">Eliminar registro de {{nameSecretaria}}</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <p>Esta seguro que desea eliminar este registro?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                      <a href="/registros/delete-secundarios/{{id}}/2" class="btn btn-danger">Eliminar</a>
+                                    </div>
                                   </div>
                                 </div>
                               </div>

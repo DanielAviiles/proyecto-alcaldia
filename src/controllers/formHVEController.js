@@ -81,6 +81,13 @@ async function modificarSecretaria(req, idSecretaria) {
   await formHVEModel.modifySecretaria(updateSecretaria, idSecretaria);
 }
 
+async function eliminarCargo(idCargo) { await formHVEModel.deleteCargo(idCargo); }
+async function eliminarDependencia(idDependencia) { await formHVEModel.deleteDependencia(idDependencia); }
+async function eliminarAreaT(idAreaT) { await formHVEModel.deleteAreaT(idAreaT); }
+
+async function eliminarEmpresa(idEmpresa) { await formHVEModel.deleteEmpresa(idEmpresa); }
+async function eliminarSecretaria(idSecretaria) { await formHVEModel.deleteSecretaria(idSecretaria); }
+
 // CONFIG AJAX REQUEST. START
 async function listarMarcaDisco(){ return await formHVEModel.showMarcaDisco() }
 async function listarTipoDisco(){ return await formHVEModel.showTipoDisco() }
@@ -130,4 +137,9 @@ module.exports = {
   modificarAreaT,
   modificarEmpresaProveedor,
   modificarSecretaria,
+  eliminarCargo,
+  eliminarDependencia,
+  eliminarAreaT,
+  eliminarEmpresa,
+  eliminarSecretaria,
 };
